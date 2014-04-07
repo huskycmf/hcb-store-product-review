@@ -84,4 +84,215 @@ class Review implements EntityInterface
      * @ORM\Column(name="created_timestamp", type="datetime", nullable=false)
      */
     private $createdTimestamp;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Review
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Review
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Review
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set advantage
+     *
+     * @param string $advantage
+     * @return Review
+     */
+    public function setAdvantage($advantage)
+    {
+        $this->advantage = $advantage;
+
+        return $this;
+    }
+
+    /**
+     * Get advantage
+     *
+     * @return string 
+     */
+    public function getAdvantage()
+    {
+        return $this->advantage;
+    }
+
+    /**
+     * Set disadvantage
+     *
+     * @param string $disadvantage
+     * @return Review
+     */
+    public function setDisadvantage($disadvantage)
+    {
+        $this->disadvantage = $disadvantage;
+
+        return $this;
+    }
+
+    /**
+     * Get disadvantage
+     *
+     * @return string 
+     */
+    public function getDisadvantage()
+    {
+        return $this->disadvantage;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Review
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set createdTimestamp
+     *
+     * @param \DateTime $createdTimestamp
+     * @return Review
+     */
+    public function setCreatedTimestamp($createdTimestamp)
+    {
+        $this->createdTimestamp = $createdTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get createdTimestamp
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedTimestamp()
+    {
+        return $this->createdTimestamp;
+    }
+
+    /**
+     * Add product
+     *
+     * @param \HcbStoreProduct\Entity\Product $product
+     * @return Review
+     */
+    public function addProduct(\HcbStoreProduct\Entity\Product $product)
+    {
+        $this->product[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \HcbStoreProduct\Entity\Product $product
+     */
+    public function removeProduct(\HcbStoreProduct\Entity\Product $product)
+    {
+        $this->product->removeElement($product);
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
 }
