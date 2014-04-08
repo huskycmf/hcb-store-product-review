@@ -67,7 +67,7 @@ class Review implements EntityInterface
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="HcbStoreProduct\Entity\Product", cascade={"persist"})
-     * @ORM\JoinTable(name="store_product_has_store_product_review",
+     * @ORM\JoinTable(name="store_product_has_review",
      *   joinColumns={
      *     @ORM\JoinColumn(name="store_product_review_id", referencedColumnName="id")
      *   },
