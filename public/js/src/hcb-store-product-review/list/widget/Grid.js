@@ -1,7 +1,7 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "hcb-store-product-review/store/ProductStore",
+    "hcb-store-product-review/store/ReviewStore",
     "dgrid/OnDemandGrid",
     "dgrid/extensions/ColumnHider",
     "dgrid/extensions/ColumnResizer",
@@ -13,25 +13,48 @@ define([
     "dgrid/Keyboard",
     "dgrid/selector",
     "dojo/i18n!../../nls/List"
-], function(declare, lang, StaticPageStore,
+], function(declare, lang, ReviewStore,
             OnDemandGrid, ColumnHider, ColumnResizer, DijitRegistry,
             _Selection, _Refresher, timestamp, editor, Keyboard,
             selector, translation) {
-    
+
     return declare('hcb-store-product-review.list.widget.Grid',
                    [ OnDemandGrid, ColumnHider, ColumnResizer,
                      Keyboard, _Selection, _Refresher, DijitRegistry ], {
         //  summary:
         //      Grid widget for displaying all available clients
         //      as list
-        store: StaticPageStore,
-
+        store: ReviewStore,
         columns: [
             selector({ label: "", width: 40, selectorType: "checkbox" }),
-            {label: translation['labelId'], hidden: true, field: 'id', sortable: true, resizable: false},
-            editor({label: translation['labelUrl'], field: 'url', hidden: false,
-                    sortable: true, resizable: true, route: '/update/:id'}),
-            timestamp({label: translation['labelCreatedTimestamp'], field: 'createdTimestamp', sortable: true})
+
+            {label: translation['idLabel'],
+             field: 'id', hidden: true,
+             sortable: false, resizable: false},
+
+            {label: translation['productTitleLabel'],
+             field: 'productTitle', hidden: false,
+             sortable: false, resizable: false},
+
+            {label: translation['enabledLabel'],
+             field: 'enabled', hidden: false,
+             sortable: false, resizable: false},
+
+            {label: translation['advantagesLabel'],
+             field: 'adv', hidden: false,
+             sortable: false,  resizable: false},
+
+            {label: translation['disadvantagesLabel'],
+             field: 'dis', hidden: false,
+             sortable: false, resizable: false},
+
+            {label: translation['commentLabel'],
+             field: 'comment', hidden: false,
+             sortable: false, resizable: false},
+
+            {label: translation['timestampLabel'],
+                field: 'timestamp', hidden: false,
+                sortable: false, resizable: false}
         ],
 
         loadingMessage: translation['loadingMessage'],
